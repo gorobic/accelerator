@@ -2,7 +2,7 @@
         </div>
     </div>
     <footer class="container">
-        <div class="border-top border-bottom py-4 py-md-5">Created with proud by Victor Locoman 🤩</div>
+        <div class="border-top border-bottom py-4 py-md-5">Created with proud by Victor Loco 🤩</div>
 
         <div class="row footer-logos align-items-center py-3">
             <div class="col-md-4 text-center text-md-start">
