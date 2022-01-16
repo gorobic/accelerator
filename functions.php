@@ -1,0 +1,161 @@
+<?php
+if ( ! function_exists( 'theme_setup' ) ) {
+    /**
+     * Sets up theme defaults and registers support for various WordPress features.
+     *
+     * Note that this function is hooked into the after_setup_theme hook, which runs
+     * before the init hook. The init hook is too late for some features, such as indicating
+     * support post thumbnails.
+     */
+    function theme_setup() {
+     
+        /**
+         * Make theme available for translation.
+         * Translations can be placed in the /languages/ directory.
+         */
+        load_theme_textdomain( 'text_domain', get_template_directory() . '/languages' );
+     
+        /**
+         * Add default posts and comments RSS feed links to <head>.
+         */
+        add_theme_support( 'automatic-feed-links' );
+     
+        /**
+         * Enable support for post thumbnails and featured images.
+         */
+        add_theme_support( 'post-thumbnails' );
+
+        /**
+         * Enable support for custom logo.
+         */
+        add_theme_support( 'custom-logo' );
+     
+        /**
+         * Add support for two custom navigation menus.
+         */
+        register_nav_menus( array(
+            'primary'   => __( 'Primary Menu', 'text_domain' ),
+            'secondary' => __('Secondary Menu', 'text_domain' )
+        ) );
+     
+        /**
+         * Enable support for the following post formats:
+         * aside, gallery, quote, image, and video
+         */
+        add_theme_support( 'post-formats', array ( 'aside', 'gallery', 'quote', 'image', 'video' ) );
+        
+    }
+} // theme_setup
+add_action( 'after_setup_theme', 'theme_setup' );
+
+
+/**
+ * Register widget area.
+ *
+ * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
+ */
+function widgets_init() {
+	register_sidebar(
+		array(
+			'name'          => __( 'Footer widgets', 'text_domain' ),
+			'id'            => 'footer-widgets', 
+			'description'   => __( 'Add widgets here to appear in your sidebar on blog posts and archive pages.', 'text_domain' ),
+			'before_widget' => '<section id="%1$s" class="widget col-md-4 %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h4 class="widget-title">',
+			'after_title'   => '</h4>',
+		)
+    );
+}
+add_action( 'widgets_init', 'widgets_init' );
+
+// Add customize options
+function acc_theme_customize_register( $wp_customize ) {
+	
+	$wp_customize->add_setting( 'acc_footer_text', array(
+		'capability' => 'edit_theme_options',
+		//'sanitize_callback' => 'acc_sanitize_text',
+	) );
+	
+	$wp_customize->add_control( 'acc_footer_text', array(
+		'type' => 'textarea',
+		'section' => 'title_tagline', // Add a default or your own section
+		'label' => __( 'Footer text' ),
+		//'description' => __( 'This is a custom dropdown pages option.' ),
+    ) );
+
+    // $wp_customize->add_setting( 'acc_thankyou_page', array(
+	// 	'capability' => 'edit_theme_options',
+	// 	'sanitize_callback' => 'acc_sanitize_dropdown_pages',
+	// ) );
+	
+	// $wp_customize->add_control( 'acc_thankyou_page', array(
+	// 	'type' => 'dropdown-pages',
+	// 	'section' => 'title_tagline', // Add a default or your own section
+	// 	'label' => __( 'Thank You page' ),
+	// ) );
+}
+add_action( 'customize_register', 'acc_theme_customize_register' );
+
+function goicc_sanitize_dropdown_pages( $page_id, $setting ) {
+	// Ensure $input is an absolute integer.
+	$page_id = absint( $page_id );
+	
+	// If $page_id is an ID of a published page, return it; otherwise, return the default.
+	return ( 'publish' == get_post_status( $page_id ) ? $page_id : $setting->default );
+}
+
+function acc_sanitize_text( $text ) {
+    return sanitize_text_field( $text );
+}
+
+// Enqueue Scrips and styles
+function custom_enqueue_wp(){
+    wp_enqueue_script( 'bootstrap', get_stylesheet_directory_uri().'/modules/bootstrap/dist/js/bootstrap.bundle.min.js', array( 'jquery'), filemtime(get_stylesheet_directory().'/modules/bootstrap/dist/js/bootstrap.min.js'), true );
+    //wp_enqueue_style( 'bootstrap', get_stylesheet_directory_uri().'/modules/bootstrap/dist/css/bootstrap.min.css', array(), filemtime(get_stylesheet_directory().'/modules/bootstrap/dist/css/bootstrap.min.css') );
+    wp_enqueue_style( 'accelerator-font', get_stylesheet_directory_uri().'/assets/fonts/accelerator/style.css', '', filemtime( get_stylesheet_directory() . '/assets/fonts/accelerator/style.css') );
+    wp_enqueue_style( 'main', get_stylesheet_directory_uri().'/assets/css/main.css', array('accelerator-font'), filemtime(get_stylesheet_directory().'/assets/css/main.css') );
+    wp_enqueue_style( 'slick', get_stylesheet_directory_uri().'/modules/slick/slick.css', array('accelerator-font'), filemtime(get_stylesheet_directory().'/modules/slick/slick.css') );
+    wp_enqueue_style( 'fancybox', get_stylesheet_directory_uri().'/modules/fancybox/jquery.fancybox.min.css', array(), filemtime(get_stylesheet_directory().'/modules/fancybox/jquery.fancybox.min.css') );
+    wp_enqueue_style( 'style', get_stylesheet_directory_uri().'/style.css', array('main', 'slick', 'fancybox'), filemtime(get_stylesheet_directory().'/style.css') );
+	wp_enqueue_style( 'responsive', get_stylesheet_directory_uri().'/assets/css/responsive.css', array('style'), filemtime(get_stylesheet_directory().'/assets/css/responsive.css') );
+    
+    wp_enqueue_script( 'fancybox', get_stylesheet_directory_uri().'/modules/fancybox/jquery.fancybox.min.js', array( 'jquery'), filemtime(get_stylesheet_directory().'/modules/fancybox/jquery.fancybox.min.js'), true );
+    wp_enqueue_script( 'slick', get_stylesheet_directory_uri().'/modules/slick/slick.min.js', array( 'jquery'), filemtime(get_stylesheet_directory().'/modules/slick/slick.min.js'), true );
+    wp_enqueue_script( 'lazy', get_stylesheet_directory_uri().'/modules/jquery.lazy-master/jquery.lazy.min.js', array( 'jquery', 'slick'), filemtime(get_stylesheet_directory().'/modules/jquery.lazy-master/jquery.lazy.min.js'), true );
+    wp_enqueue_script( 'index', get_stylesheet_directory_uri().'/assets/js/index.js', array( 'jquery', 'slick', 'lazy', 'fancybox'), filemtime(get_stylesheet_directory().'/assets/js/index.js'), true );
+    
+    
+}
+add_action( 'wp_enqueue_scripts', 'custom_enqueue_wp' );
+
+// wpml shortcodes --------------------
+ 
+add_shortcode( 'wpml_language', 'wpml_find_language');
+ 
+ 
+/* 
+ * Shortcode [wpml_language language="en"] [/wpml_language]
+ */
+ 
+function wpml_find_language( $attr, $content = null ){
+     
+    extract(shortcode_atts(array(
+ 
+        'language' => '',
+ 
+    ), $attr));
+     
+    $current_language = ICL_LANGUAGE_CODE;
+     
+    if($current_language == $language){
+        $output = do_shortcode($content);
+    }else{
+        $output = "";
+    }
+         
+    return $output;
+}
+
+require get_parent_theme_file_path( '/modules/wp-bootstrap-5-navwalker/wp-bootstrap-5-navwalker.php' );
+require get_parent_theme_file_path( '/inc/functions-wpbakery.php' );

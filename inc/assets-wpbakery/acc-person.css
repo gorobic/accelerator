@@ -1,0 +1,23 @@
+.wpb_acc_person:not(:last-child) {
+	border-bottom: 1px solid #e6e6e6;
+}
+
+.wpb_acc_person .wpb_element_title .vc_element-icon {
+	display: inline-block;
+	float: none !important;
+	vertical-align: middle;
+}
+
+.wpb_acc_person .attach_image {
+	max-height: 40px;
+}
+
+.wpb_acc_person .wpb_vc_param_value {
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 1rem;
+}
+
+.wpb_acc_person .wpb_vc_param_value.acc_person_name {
+	font-weight: bold;
+}

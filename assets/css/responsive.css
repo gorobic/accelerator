@@ -1,0 +1,23 @@
+@media (max-width: 575.98px) {
+	.header-logos img {
+		max-height: 40px;
+		margin-top: 0.6rem;
+		margin-bottom: 0.6rem;
+	}
+
+	.acc-carousel__item {
+		min-height: 350px;
+	}
+
+	.acc-carousel__item-content {
+		font-size: 0.95rem;
+	}
+
+	.footer-logos img {
+		width: 120px;
+	}
+
+	.footer-logos .eea-grants-logo img {
+		width: 90px;
+	}
+}
