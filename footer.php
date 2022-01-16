@@ -1,8 +1,9 @@
-            </div>
         </div>
     </div>
     <footer class="container">
-        <div class="border-top border-bottom py-4 py-md-5">Created with proud by Victor Loco 🤩</div>
+        <div class="border-top border-bottom py-4 py-md-5">
+            <?php echo do_shortcode(get_theme_mod( 'acc_footer_text' )); ?>
+        </div>
 
         <div class="row footer-logos align-items-center py-3">
             <div class="col-md-4 text-center text-md-start">
