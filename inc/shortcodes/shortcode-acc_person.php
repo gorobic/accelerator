@@ -1,4 +1,4 @@
-<?php $person_id = sanitize_title($atts['acc_person_name']); ?>
+<?php $person_id = sanitize_title($atts['acc_person_name']) . rand(); ?>
 <div class="col acc-person">
     <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#<?php echo $person_id; ?>">
         <div class="lazy ratio ratio-1x1 bg-cover bg-dark bg-opacity-10 featured-image" data-src="<?php echo wp_get_attachment_image_src($atts['acc_person_img'], 'full')['0']; ?>">
