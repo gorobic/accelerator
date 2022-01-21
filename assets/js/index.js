@@ -1,7 +1,7 @@
 (function ($) {
 	$(".lazy").Lazy();
 
-	$(".acc-carousel").slick({
+	$(".acep-carousel").slick({
 		dots: false,
 		infinite: true,
 		speed: 500,

@@ -1,10 +1,10 @@
 /*
-Theme Name: Accelerator
+Theme Name: acep
 Description: Clear theme for development.
 Version: 1.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: accelerator
+Text Domain: acep
 Tags: theme, wordpress, clear theme
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
@@ -29,7 +29,7 @@ body {
 }
 
 .header-logos .site-logo img {
-	max-height: 45px;
+	max-height: 35px;
 }
 
 ul#primary-menu ul.dropdown-menu {
@@ -58,19 +58,19 @@ ul#primary-menu ul.dropdown-menu a {
 	box-shadow: 0 0 0 0.1rem;
 }
 
-.acc-carousel__item {
+.acep-carousel__item {
 	position: relative;
 	background-size: cover;
 	background-position: center;
 	min-height: 500px;
 }
 
-.acc-carousel__item > * {
+.acep-carousel__item > * {
 	position: relative;
 	z-index: 5;
 }
 
-.acc-carousel__item:before {
+.acep-carousel__item:before {
 	content: "";
 	position: absolute;
 	top: 0;
@@ -81,22 +81,22 @@ ul#primary-menu ul.dropdown-menu a {
 	opacity: 0.4;
 }
 
-.acc-carousel .slick-track {
+.acep-carousel .slick-track {
 	display: flex !important;
 }
 
-.acc-carousel__item {
+.acep-carousel__item {
 	height: inherit !important;
 }
 
-.acc-carousel__item-content {
+.acep-carousel__item-content {
 	font-size: 1.25rem;
 }
 
-.acc-carousel .slick-prev:before,
-.acc-carousel .slick-next:before {
+.acep-carousel .slick-prev:before,
+.acep-carousel .slick-next:before {
 	content: "\e900";
-	font-family: "accelerator";
+	font-family: "acep";
 	color: #000;
 	font-size: 20px;
 	line-height: 1;
@@ -104,12 +104,12 @@ ul#primary-menu ul.dropdown-menu a {
 	display: block;
 }
 
-.acc-carousel .slick-prev:before {
+.acep-carousel .slick-prev:before {
 	transform: rotate(180deg);
 }
 
-.acc-carousel .slick-prev,
-.acc-carousel .slick-next {
+.acep-carousel .slick-prev,
+.acep-carousel .slick-next {
 	font-size: 0;
 	line-height: 0;
 	color: transparent;
@@ -126,17 +126,17 @@ ul#primary-menu ul.dropdown-menu a {
 	bottom: 0;
 }
 
-.acc-carousel .slick-prev {
+.acep-carousel .slick-prev {
 	right: 50px;
 	padding-right: 10px;
 }
 
-.acc-carousel .slick-next {
+.acep-carousel .slick-next {
 	right: 0;
 	padding-left: 10px;
 }
 
-.acc-person .featured-image .arrow {
+.acep-person .featured-image .arrow {
 	position: absolute;
 	bottom: 0;
 	right: 0;
@@ -162,6 +162,15 @@ ul#primary-menu ul.dropdown-menu a {
 .page-numbers.current {
 	color: rgba(0, 0, 0, 0.3);
 	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.wpb_single_image.vc_align_center > .vc_figure,
+.wpb_single_image.vc_align_center > .vc_figure > .vc_single_image-wrapper,
+.wpb_single_image.vc_align_center
+	> .vc_figure
+	> .vc_single_image-wrapper
+	> img {
+	width: 100%;
 }
 
 .footer-logos img {

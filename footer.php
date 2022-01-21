@@ -2,7 +2,7 @@
     </div>
     <footer class="container">
         <div class="border-top border-bottom py-4 py-md-5">
-            <?php echo do_shortcode(get_theme_mod( 'acc_footer_text' )); ?>
+            <?php echo do_shortcode(get_theme_mod( 'acep_footer_text' )); ?>
         </div>
 
         <div class="row footer-logos align-items-center py-3">

@@ -6,11 +6,11 @@
         </h1>
 
         <p class="mb-4">
-            <?php _e('It seems we can&rsquo;t find what you&rsquo;re looking for.', 'accelerator'); ?>
+            <?php _e('It seems we can&rsquo;t find what you&rsquo;re looking for.', 'acep'); ?>
         </p>
 
         <a href="/" class="btn btn-outline-primary rounded-0 text-uppercase">
-        <?php _e('Go to home page', 'accelerator'); ?>
+        <?php _e('Go to home page', 'acep'); ?>
         </a>
 
     </main>

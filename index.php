@@ -19,7 +19,7 @@
         <?php } else { ?>
 
             <p>
-                <?php _e('It seems we can&rsquo;t find what you&rsquo;re looking for.', 'accelerator'); ?>
+                <?php _e('It seems we can&rsquo;t find what you&rsquo;re looking for.', 'acep'); ?>
             </p>
             <?php //get_search_form(); ?>
 

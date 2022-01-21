@@ -70,32 +70,32 @@ function widgets_init() {
 add_action( 'widgets_init', 'widgets_init' );
 
 // Add customize options
-function acc_theme_customize_register( $wp_customize ) {
+function acep_theme_customize_register( $wp_customize ) {
 	
-	$wp_customize->add_setting( 'acc_footer_text', array(
+	$wp_customize->add_setting( 'acep_footer_text', array(
 		'capability' => 'edit_theme_options',
-		//'sanitize_callback' => 'acc_sanitize_text',
+		//'sanitize_callback' => 'acep_sanitize_text',
 	) );
 	
-	$wp_customize->add_control( 'acc_footer_text', array(
+	$wp_customize->add_control( 'acep_footer_text', array(
 		'type' => 'textarea',
 		'section' => 'title_tagline', // Add a default or your own section
 		'label' => __( 'Footer text' ),
 		//'description' => __( 'This is a custom dropdown pages option.' ),
     ) );
 
-    // $wp_customize->add_setting( 'acc_thankyou_page', array(
+    // $wp_customize->add_setting( 'acep_thankyou_page', array(
 	// 	'capability' => 'edit_theme_options',
-	// 	'sanitize_callback' => 'acc_sanitize_dropdown_pages',
+	// 	'sanitize_callback' => 'acep_sanitize_dropdown_pages',
 	// ) );
 	
-	// $wp_customize->add_control( 'acc_thankyou_page', array(
+	// $wp_customize->add_control( 'acep_thankyou_page', array(
 	// 	'type' => 'dropdown-pages',
 	// 	'section' => 'title_tagline', // Add a default or your own section
 	// 	'label' => __( 'Thank You page' ),
 	// ) );
 }
-add_action( 'customize_register', 'acc_theme_customize_register' );
+add_action( 'customize_register', 'acep_theme_customize_register' );
 
 function goicc_sanitize_dropdown_pages( $page_id, $setting ) {
 	// Ensure $input is an absolute integer.
@@ -105,7 +105,7 @@ function goicc_sanitize_dropdown_pages( $page_id, $setting ) {
 	return ( 'publish' == get_post_status( $page_id ) ? $page_id : $setting->default );
 }
 
-function acc_sanitize_text( $text ) {
+function acep_sanitize_text( $text ) {
     return sanitize_text_field( $text );
 }
 
@@ -113,9 +113,9 @@ function acc_sanitize_text( $text ) {
 function custom_enqueue_wp(){
     wp_enqueue_script( 'bootstrap', get_stylesheet_directory_uri().'/modules/bootstrap/dist/js/bootstrap.bundle.min.js', array( 'jquery'), filemtime(get_stylesheet_directory().'/modules/bootstrap/dist/js/bootstrap.min.js'), true );
     //wp_enqueue_style( 'bootstrap', get_stylesheet_directory_uri().'/modules/bootstrap/dist/css/bootstrap.min.css', array(), filemtime(get_stylesheet_directory().'/modules/bootstrap/dist/css/bootstrap.min.css') );
-    wp_enqueue_style( 'accelerator-font', get_stylesheet_directory_uri().'/assets/fonts/accelerator/style.css', '', filemtime( get_stylesheet_directory() . '/assets/fonts/accelerator/style.css') );
-    wp_enqueue_style( 'main', get_stylesheet_directory_uri().'/assets/css/main.css', array('accelerator-font'), filemtime(get_stylesheet_directory().'/assets/css/main.css') );
-    wp_enqueue_style( 'slick', get_stylesheet_directory_uri().'/modules/slick/slick.css', array('accelerator-font'), filemtime(get_stylesheet_directory().'/modules/slick/slick.css') );
+    wp_enqueue_style( 'acep-font', get_stylesheet_directory_uri().'/assets/fonts/acep/style.css', '', filemtime( get_stylesheet_directory() . '/assets/fonts/acep/style.css') );
+    wp_enqueue_style( 'main', get_stylesheet_directory_uri().'/assets/css/main.css', array('acep-font'), filemtime(get_stylesheet_directory().'/assets/css/main.css') );
+    wp_enqueue_style( 'slick', get_stylesheet_directory_uri().'/modules/slick/slick.css', array('acep-font'), filemtime(get_stylesheet_directory().'/modules/slick/slick.css') );
     wp_enqueue_style( 'fancybox', get_stylesheet_directory_uri().'/modules/fancybox/jquery.fancybox.min.css', array(), filemtime(get_stylesheet_directory().'/modules/fancybox/jquery.fancybox.min.css') );
     wp_enqueue_style( 'style', get_stylesheet_directory_uri().'/style.css', array('main', 'slick', 'fancybox'), filemtime(get_stylesheet_directory().'/style.css') );
 	wp_enqueue_style( 'responsive', get_stylesheet_directory_uri().'/assets/css/responsive.css', array('style'), filemtime(get_stylesheet_directory().'/assets/css/responsive.css') );
