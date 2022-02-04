@@ -97,7 +97,7 @@ function acep_theme_customize_register( $wp_customize ) {
 }
 add_action( 'customize_register', 'acep_theme_customize_register' );
 
-function goicc_sanitize_dropdown_pages( $page_id, $setting ) {
+function acep_sanitize_dropdown_pages( $page_id, $setting ) {
 	// Ensure $input is an absolute integer.
 	$page_id = absint( $page_id );
 	
