@@ -1,14 +1,18 @@
 (function ($) {
 	$(".lazy").Lazy();
 
-	$(".acep-carousel").slick({
-		dots: false,
-		infinite: true,
-		speed: 500,
-		//fade: true,
-		cssEase: "linear",
-		lazyLoad: "ondemand",
-	});
+	$(".acep-carousel")
+		.slick({
+			dots: false,
+			infinite: true,
+			speed: 500,
+			//fade: true,
+			cssEase: "linear",
+			lazyLoad: "ondemand",
+		})
+		.on("afterChange", function () {
+			$(".lazy").Lazy();
+		});
 
 	$(".fancybox, [data-fancybox]").fancybox();
 
