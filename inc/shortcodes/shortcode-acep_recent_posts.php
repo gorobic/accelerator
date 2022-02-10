@@ -12,9 +12,9 @@ $args = array(
 $acep_recent_posts = new WP_Query($args);
 
 if ($acep_recent_posts->have_posts()) { ?>
-    <div class="posts-wrap row gy-4">
+    <div class="posts-wrap row justify-content-center row-cols-1 row-cols-md-<?php echo ($acep_recent_posts_columns === 1) ? 1 : 2 ?> row-cols-xl-<?php echo ($acep_recent_posts_columns > 0 && $acep_recent_posts_columns <=3) ? $acep_recent_posts_columns : 3 ?> gy-4">
         <?php while ($acep_recent_posts->have_posts()){ $acep_recent_posts->the_post(); ?>
-            <div class="col-md-<?php echo ($acep_recent_posts_columns === 1) ? 12 : 6 ?> col-xl-<?php echo ($acep_recent_posts_columns > 0 && $acep_recent_posts_columns <=3) ? 12/$acep_recent_posts_columns : 3 ?>">
+            <div class="col">
                 <?php get_template_part('template-parts/content/content', 'excerpt'); ?>
             </div>
         <?php } ?>
