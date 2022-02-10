@@ -42,7 +42,7 @@
                     </div>
                     <div class="col-auto flex-shrink-1">
                         <a href="https://i8.is/" target="_blank">
-                            <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/i8-logo.png'; ?>" alt="i8 logo">
+                            <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/logo-i8.svg'; ?>" alt="i8 logo">
                         </a>
                     </div>
                     
