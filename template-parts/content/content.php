@@ -15,7 +15,15 @@
     <!-- Afișăm data (November 16th, 2009 format) -->
     <!-- și link spre alte postări ale autorului. -->
 
-    <div class="text-capitalize text-center mb-5 mt-4"><?php the_time('d F Y'); ?></div>
+    <div class="text-capitalize text-center mb-5 mt-4">
+        <?php 
+        if (ICL_LANGUAGE_CODE == "en") {
+            the_time('F d, Y');
+        } else {
+            the_time('d F Y');
+        }
+        ?>
+    </div>
 
 
 
