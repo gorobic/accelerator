@@ -60,7 +60,7 @@ function acep_wpbakery_extend() {
                     "value" => __("", "acep"),
                 ),
                 array(
-                    "type" => "textfield",
+                    "type" => "textarea",
                     "holder" => "div",
                     "class" => "",
                     "admin_label" => false,
