@@ -163,6 +163,45 @@ function acep_wpbakery_extend() {
             ),
         ) 
     );
+
+    $terms_editions = get_terms( array(
+        'taxonomy' => 'acep_edition',
+        'hide_empty' => false,
+        // 'fields' => array('ids','name')
+    ) );
+    
+    foreach ($terms_editions as $item) {
+        $terms_editions_result[$item->name] = $item->term_id;
+    }
+
+    vc_map(
+        array(
+            "name" => __("ACEP Artists", "acep"),
+            "base" => "acep_artists",
+            "show_settings_on_create" => true,
+            "params" => array(
+                array(
+                    "type" => "textfield",
+                    "heading" => __("Number of columns (for desktop)", "acep"),
+                    "param_name" => "acep_artists_columns",
+                    "value" => 5,
+                    "description" => __('', "acep")
+                ),
+                array(
+                    "type" => "checkbox",
+                    "heading" => __("Select Edition(s)"),
+                    "param_name" => "acep_artists_editions",
+                    "value" => $terms_editions_result,
+                ),
+                array(
+                    "type" => "textfield",
+                    "heading" => __("Extra class name", "acep"),
+                    "param_name" => "el_class",
+                    "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "acep")
+                )
+            ),
+        ) 
+    );
 }
 
 
@@ -191,6 +230,20 @@ function acep_recent_posts_funct($atts) {
     ), $atts, 'acep_recent_posts');
 
     include(locate_template('inc/shortcodes/shortcode-acep_recent_posts.php'));
+
+    return ob_get_clean();
+}
+
+add_shortcode('acep_artists', 'acep_artists_funct');
+function acep_artists_funct($atts) {
+    ob_start();
+    $atts = shortcode_atts(array(
+        'acep_artists_editions' => false,
+        'acep_artists_columns' => '5',  
+        'el_class' => '',
+    ), $atts, 'acep_recent_posts');
+
+    include(locate_template('inc/shortcodes/shortcode-acep_artists.php'));
 
     return ob_get_clean();
 }

@@ -1,3 +1,10 @@
+@media (min-width: 992px) {
+	.acep-artist-profile-picture {
+		width: 260px;
+		margin-top: -190px;
+	}
+}
+
 @media (max-width: 575.98px) {
 	.header-logos img {
 		max-height: 40px;

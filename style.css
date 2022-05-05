@@ -136,12 +136,59 @@ ul#primary-menu ul.dropdown-menu a {
 	padding-left: 10px;
 }
 
-.acep-person .featured-image .arrow {
+.featured-image .arrow {
 	position: absolute;
 	bottom: 0;
 	right: 0;
 	background-color: #fff;
 	padding: 0 10px;
+}
+
+.acep-artist-grayscale {
+	filter: grayscale(1);
+	transition: all 0.2s ease-in-out;
+}
+
+.acep-artist-grayscale:hover {
+	filter: grayscale(0);
+}
+
+.acep-artist-profile-picture {
+	width: 140px;
+	margin-top: -100px;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	z-index: 5;
+}
+
+.acep-artist-cover .acep-artist-cover_overlay {
+	background-color: rgba(0, 0, 0, 0.5);
+	transition: all 0.2s ease-in-out;
+}
+
+.acep-artist-cover .acep-artist-cover_overlay:hover {
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.acep-artist-tooltip {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 5;
+}
+
+.acep-artist-tooltip > * {
+	background-color: #fff;
+	display: block;
+	width: 25px;
+	border-radius: 999px;
+	height: 25px;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0.5;
 }
 
 .page-numbers {

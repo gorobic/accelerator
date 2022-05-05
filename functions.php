@@ -158,4 +158,5 @@ function wpml_find_language( $attr, $content = null ){
 }
 
 require get_parent_theme_file_path( '/modules/wp-bootstrap-5-navwalker/wp-bootstrap-5-navwalker.php' );
+require get_parent_theme_file_path( '/inc/functions-posttypes-taxonomies.php' );
 require get_parent_theme_file_path( '/inc/functions-wpbakery.php' );

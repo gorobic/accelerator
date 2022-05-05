@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'acep';
-  src:  url('fonts/acep.eot?tsvmdi');
-  src:  url('fonts/acep.eot?tsvmdi#iefix') format('embedded-opentype'),
-    url('fonts/acep.ttf?tsvmdi') format('truetype'),
-    url('fonts/acep.woff?tsvmdi') format('woff'),
-    url('fonts/acep.svg?tsvmdi#acep') format('svg');
+  src:  url('fonts/acep.eot?3hwcph');
+  src:  url('fonts/acep.eot?3hwcph#iefix') format('embedded-opentype'),
+    url('fonts/acep.ttf?3hwcph') format('truetype'),
+    url('fonts/acep.woff?3hwcph') format('woff'),
+    url('fonts/acep.svg?3hwcph#acep') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -27,4 +27,7 @@
 
 .acepicon-arrow-right:before {
   content: "\e900";
+}
+.acepicon-info:before {
+  content: "\e901";
 }
