@@ -18,10 +18,10 @@
                         $caption = "";
                         if(get_field('acep_artist_photo_credits_poster') || get_field('acep_artist_poster_title') || get_field('acep_artist_poster_desc')){
                             if(get_field('acep_artist_photo_credits_poster')){
-                                $caption .= '<div>'. __('Cover image photo credits','acep') . ': '. get_field('acep_artist_photo_credits_poster') . '</div>';
+                                $caption .= '<div>'. __('Photo credits','acep') . ' '. get_field('acep_artist_photo_credits_poster') . '</div>';
                             }
                             if(get_field('acep_artist_poster_title')){
-                                $caption .= '<div>'. __('Title','acep') . ': <strong>'. get_field('acep_artist_poster_title') . '</strong></div>';
+                                $caption .= '<div>'. __('Title of art work','acep') . ': <strong>'. get_field('acep_artist_poster_title') . '</strong></div>';
                             }
                             if(get_field('acep_artist_poster_desc')){
                                 $caption .= '<div>'. get_field('acep_artist_poster_desc') . '</div>';
@@ -54,7 +54,7 @@
                         <?php 
                         $caption = "";
                         if(get_field('acep_artist_photo_credits_photo')){
-                            $caption = __('Profile picture photo credits','acep') . ': '. get_field('acep_artist_photo_credits_photo');
+                            $caption = __('Photo credits','acep') . ' '. get_field('acep_artist_photo_credits_photo');
                         ?>
                             <div class="acep-artist-tooltip p-2">
                                 <span 
