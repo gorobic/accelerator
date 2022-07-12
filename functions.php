@@ -133,7 +133,6 @@ add_action( 'wp_enqueue_scripts', 'custom_enqueue_wp' );
  
 add_shortcode( 'wpml_language', 'wpml_find_language');
  
- 
 /* 
  * Shortcode [wpml_language language="en"] [/wpml_language]
  */
@@ -160,3 +159,4 @@ function wpml_find_language( $attr, $content = null ){
 require get_parent_theme_file_path( '/modules/wp-bootstrap-5-navwalker/wp-bootstrap-5-navwalker.php' );
 require get_parent_theme_file_path( '/inc/functions-posttypes-taxonomies.php' );
 require get_parent_theme_file_path( '/inc/functions-wpbakery.php' );
+require get_parent_theme_file_path( '/inc/functions-acf.php' );
