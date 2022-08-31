@@ -191,6 +191,21 @@ ul#primary-menu ul.dropdown-menu a {
 	opacity: 0.5;
 }
 
+.acep-grid-gallery {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+
+.acep-grid-gallery > * {
+	width: min-content;
+}
+
+.acep-grid-gallery img {
+	max-width: 100%;
+	width: 100%;
+}
+
 .page-numbers {
 	display: inline-block;
 	margin: 0.5rem;

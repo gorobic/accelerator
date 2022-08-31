@@ -202,6 +202,32 @@ function acep_wpbakery_extend() {
             ),
         ) 
     );
+
+    vc_map(
+        array(
+            "name" => __("ACEP Grid Gallery", "acep"),
+            "base" => "acep_grid_gallery",
+            "show_settings_on_create" => true,
+            "params" => array(
+                array(
+                    "type" => "textfield",
+                    "holder" => "div",
+                    "class" => "",
+                    "admin_label" => false,
+                    "heading" => __("Image minimum width (in pixel)", "acep"),
+                    "param_name" => "acep_grid_gallery_img_min_width",
+                    "value" => 100,
+                    "description" => __('Max value ~ 200', "acep")
+                ),
+                array(
+                    "type" => "attach_images",
+                    "heading" => __("Images", "acep"),
+                    "param_name" => "acep_grid_gallery_imgs",
+                    "description" => __('Avoid placing images whose height is more than width in the last position. Use Drang and Drop to reorder images.', "acep")
+                ),
+            ),
+        ) 
+    );
 }
 
 
@@ -271,6 +297,21 @@ function acep_person_funct($atts, $content) {
     ), $atts, 'acep_person');
 
     include(locate_template('inc/shortcodes/shortcode-acep_person.php'));
+
+    return ob_get_clean();
+}
+
+add_shortcode('acep_grid_gallery', 'acep_grid_gallery_funct');
+function acep_grid_gallery_funct($atts, $content) {
+    ob_start();
+    $atts = shortcode_atts(array(
+        'acep_grid_gallery_imgs' => '',
+        'acep_grid_gallery_img_min_width' => '100',
+    ), $atts, 'acep_grid_gallery');
+
+    $image_ids = explode(",", $atts['acep_grid_gallery_imgs']);
+
+    include(locate_template('inc/shortcodes/shortcode-acep_grid_gallery.php'));
 
     return ob_get_clean();
 }
