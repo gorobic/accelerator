@@ -388,16 +388,3 @@ function acep_grid_gallery_funct($atts, $content) {
 
     return ob_get_clean();
 }
-
-add_shortcode('work_author', 'acep_work_author_funct');
-function acep_work_author_funct($atts, $content) {
-    ob_start();
-    $atts = shortcode_atts(array(
-        'acep_grid_gallery_imgs' => '',
-        'acep_grid_gallery_img_min_width' => '100',
-    ), $atts, 'acep_grid_gallery');
-
-    include(locate_template('inc/shortcodes/shortcode-work_author.php'));
-
-    return ob_get_clean();
-}
