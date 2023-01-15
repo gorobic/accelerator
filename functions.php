@@ -111,6 +111,16 @@ function acep_sanitize_text( $text ) {
 
 // Enqueue Scrips and styles
 function custom_enqueue_wp(){
+
+    wp_dequeue_script( 'lightbox2' );
+    wp_deregister_script( 'lightbox2' );
+    wp_dequeue_style( 'lightbox2' );
+    wp_deregister_style( 'lightbox2' );
+    wp_dequeue_script( 'prettyphoto' );
+    wp_deregister_script( 'prettyphoto' );
+    wp_dequeue_style( 'prettyphoto' );
+    wp_deregister_style( 'prettyphoto' );
+
     wp_enqueue_script( 'bootstrap', get_stylesheet_directory_uri().'/modules/bootstrap/dist/js/bootstrap.bundle.min.js', array( 'jquery'), filemtime(get_stylesheet_directory().'/modules/bootstrap/dist/js/bootstrap.min.js'), true );
     //wp_enqueue_style( 'bootstrap', get_stylesheet_directory_uri().'/modules/bootstrap/dist/css/bootstrap.min.css', array(), filemtime(get_stylesheet_directory().'/modules/bootstrap/dist/css/bootstrap.min.css') );
     wp_enqueue_style( 'acep-font', get_stylesheet_directory_uri().'/assets/fonts/acep/style.css', '', filemtime( get_stylesheet_directory() . '/assets/fonts/acep/style.css') );
@@ -122,8 +132,9 @@ function custom_enqueue_wp(){
     
     wp_enqueue_script( 'fancybox', get_stylesheet_directory_uri().'/modules/fancybox/jquery.fancybox.min.js', array( 'jquery'), filemtime(get_stylesheet_directory().'/modules/fancybox/jquery.fancybox.min.js'), true );
     wp_enqueue_script( 'slick', get_stylesheet_directory_uri().'/modules/slick/slick.min.js', array( 'jquery'), filemtime(get_stylesheet_directory().'/modules/slick/slick.min.js'), true );
+    wp_enqueue_script( 'masonry', get_stylesheet_directory_uri().'/modules/masonry/masonry.pkgd.min.js', array( 'jquery'), filemtime(get_stylesheet_directory().'/modules/slick/slick.min.js'), true );
     wp_enqueue_script( 'lazy', get_stylesheet_directory_uri().'/modules/jquery.lazy-master/jquery.lazy.min.js', array( 'jquery', 'slick'), filemtime(get_stylesheet_directory().'/modules/jquery.lazy-master/jquery.lazy.min.js'), true );
-    wp_enqueue_script( 'index', get_stylesheet_directory_uri().'/assets/js/index.js', array( 'jquery', 'slick', 'lazy', 'fancybox'), filemtime(get_stylesheet_directory().'/assets/js/index.js'), true );
+    wp_enqueue_script( 'index', get_stylesheet_directory_uri().'/assets/js/index.js', array( 'jquery', 'slick', 'lazy', 'fancybox', 'masonry'), filemtime(get_stylesheet_directory().'/assets/js/index.js'), true );
     
     
 }

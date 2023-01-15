@@ -40,4 +40,31 @@
 			)
 			.attr("data-fancybox", "gallery-" + index);
 	});
+
+	$(".vc_masonry_media_grid").on("click", ".vc_gitem-link", function (event) {
+		event.preventDefault();
+
+		$(".vc_masonry_media_grid").each(function (index, masonryMediaItem) {
+			var shortcode_id = JSON.parse(
+				$(this).attr("data-vc-grid-settings")
+			).shortcode_id;
+
+			var elements = $(this).find("a");
+
+			$(this)
+				.find("a")
+				.attr("data-fancybox", "gallery-" + shortcode_id);
+		});
+
+		$(
+			"a[href$='.webp'], a[href$='.jpg'], a[href$='.png'], a[href$='.jpeg'], a[href$='.gif']"
+		).fancybox();
+
+		$(this).trigger("click");
+	});
+
+	$(".acep-works").masonry({
+		// options
+		itemSelector: ".acep-work",
+	});
 })(jQuery);

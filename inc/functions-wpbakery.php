@@ -203,6 +203,64 @@ function acep_wpbakery_extend() {
         ) 
     );
 
+    $terms_exhibitions = get_terms( array(
+        'taxonomy' => 'acep_exhibition',
+        'hide_empty' => false,
+        // 'fields' => array('ids','name')
+    ) );
+    
+    foreach ($terms_exhibitions as $item) {
+        $terms_exhibitions_result[$item->name] = $item->term_id;
+    }
+
+    $args = array( 
+        'post_type' => 'acep_artists', 
+        'suppress_filters' => true,
+        'posts_per_page' => -1
+    );
+    $posts_artists = new WP_Query( $args );
+
+    $posts_artists_result = array('Select' => '');
+    
+    foreach ($posts_artists->posts as $item) {
+        $posts_artists_result[$item->post_title] = $item->ID;
+    }
+
+    vc_map(
+        array(
+            "name" => __("ACEP Works", "acep"),
+            "base" => "acep_works",
+            "show_settings_on_create" => true,
+            "params" => array(
+                array(
+                    "type" => "textfield",
+                    "heading" => __("Number of columns (for desktop)", "acep"),
+                    "param_name" => "acep_works_columns",
+                    "value" => 3,
+                    "description" => __('', "acep")
+                ),
+                array(
+                    "type" => "checkbox",
+                    "heading" => __("Select Exhibition(s)"),
+                    "param_name" => "acep_works_exhibitions",
+                    "value" => $terms_exhibitions_result,
+                ),
+                array(
+                    "type" => "dropdown",
+                    "heading" => __("Select Author(s)"),
+                    "param_name" => "acep_works_authors",
+                    "value" => $posts_artists_result,
+                ),
+                array(
+                    "type" => "textfield",
+                    "heading" => __("Extra class name", "acep"),
+                    "param_name" => "el_class",
+                    "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "acep")
+                )
+            ),
+        ) 
+    );
+
     vc_map(
         array(
             "name" => __("ACEP Grid Gallery", "acep"),
@@ -267,9 +325,24 @@ function acep_artists_funct($atts) {
         'acep_artists_editions' => false,
         'acep_artists_columns' => '5',  
         'el_class' => '',
-    ), $atts, 'acep_recent_posts');
+    ), $atts, 'acep_artists');
 
     include(locate_template('inc/shortcodes/shortcode-acep_artists.php'));
+
+    return ob_get_clean();
+}
+
+add_shortcode('acep_works', 'acep_works_funct');
+function acep_works_funct($atts) {
+    ob_start();
+    $atts = shortcode_atts(array(
+        'acep_works_exhibitions' => false,
+        'acep_works_authors' => false,
+        'acep_works_columns' => '3',  
+        'el_class' => '',
+    ), $atts, 'acep_works');
+
+    include(locate_template('inc/shortcodes/shortcode-acep_works.php'));
 
     return ob_get_clean();
 }
@@ -312,6 +385,19 @@ function acep_grid_gallery_funct($atts, $content) {
     $image_ids = explode(",", $atts['acep_grid_gallery_imgs']);
 
     include(locate_template('inc/shortcodes/shortcode-acep_grid_gallery.php'));
+
+    return ob_get_clean();
+}
+
+add_shortcode('work_author', 'acep_work_author_funct');
+function acep_work_author_funct($atts, $content) {
+    ob_start();
+    $atts = shortcode_atts(array(
+        'acep_grid_gallery_imgs' => '',
+        'acep_grid_gallery_img_min_width' => '100',
+    ), $atts, 'acep_grid_gallery');
+
+    include(locate_template('inc/shortcodes/shortcode-work_author.php'));
 
     return ob_get_clean();
 }

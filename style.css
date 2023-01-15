@@ -191,6 +191,12 @@ ul#primary-menu ul.dropdown-menu a {
 	opacity: 0.5;
 }
 
+.acep-work img {
+	max-width: 100%;
+	width: 100%;
+	height: auto;
+}
+
 .acep-grid-gallery {
 	display: flex;
 	gap: 1rem;

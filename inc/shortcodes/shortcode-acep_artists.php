@@ -10,7 +10,7 @@ if($atts['acep_artists_editions']){
         array(
             'taxonomy' => 'acep_edition',
             'field'    => 'id',
-            'terms'    => intval($atts['acep_artists_editions']),
+            'terms'    => explode(',', $atts['acep_artists_editions']),
         ),
     );
 }
@@ -42,7 +42,7 @@ if ($acep_artists->have_posts()) {
                         </header>
                     </a>
                 </div>
-            <?php } ?>
+            <?php } wp_reset_postdata(); ?>
         </div>
     </div>
 <?php } ?>

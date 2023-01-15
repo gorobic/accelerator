@@ -17,6 +17,6 @@ if ($acep_recent_posts->have_posts()) { ?>
             <div class="col">
                 <?php get_template_part('template-parts/content/content', 'excerpt'); ?>
             </div>
-        <?php } ?>
+        <?php } wp_reset_postdata(); ?>
     </div>
 <?php } ?>
