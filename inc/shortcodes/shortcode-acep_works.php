@@ -41,13 +41,8 @@ if ($acep_works->have_posts()) {
                         <?php echo get_the_post_thumbnail(get_the_ID(), 'large'); ?>   
                     
                         <header class="entry-header mt-3">
-                            <?php if(get_the_title()){ ?>
-                                <h2 class="title fs-5 fw-normal text-center mb-0">
-                                    <?php echo the_title(); ?>
-                                </h2>
-                            <?php } ?>
                             <?php if(get_field('acep_work_author')){ ?>
-                                <div class="text-center">
+                                <div class="text-center fs-5">
                                     <?php $i = 1; foreach(get_field('acep_work_author') as $author){ ?>
                                         <?php
                                         echo get_the_title($author); 
@@ -55,6 +50,11 @@ if ($acep_works->have_posts()) {
                                         ?>
                                     <?php $i++; } ?>
                                 </div>
+                            <?php } ?>
+                            <?php if(get_the_title()){ ?>
+                                <h3 class="title fs-6 fw-normal text-center mb-0">
+                                    <?php echo the_title(); ?>
+                                </h3>
                             <?php } ?>
                         </header>
                     </a>
