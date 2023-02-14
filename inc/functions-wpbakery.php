@@ -215,7 +215,7 @@ function acep_wpbakery_extend() {
 
     $args = array( 
         'post_type' => 'acep_artists', 
-        'suppress_filters' => true,
+        'suppress_filters' => false,
         'posts_per_page' => -1
     );
     $posts_artists = new WP_Query( $args );
