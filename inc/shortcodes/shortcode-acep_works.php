@@ -3,6 +3,8 @@ $args = array(
 	'post_type' => 'acep_works',
 	'posts_per_page' => -1,
 	'nopaging' => true,
+	'orderby' => 'menu_order',
+	'order' => 'ASC',
 );
 
 if($atts['acep_works_exhibitions']){
