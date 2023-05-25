@@ -6,7 +6,7 @@ $args = array(
 	'orderby' => 'menu_order',
 	'order' => 'ASC',
 );
-var_dump($atts['acep_works_ids']);
+
 if($atts['acep_works_ids']){
     $args['post__in'] = explode(',', $atts['acep_works_ids']);
     $args['orderby'] = 'post__in';
