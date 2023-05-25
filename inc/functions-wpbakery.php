@@ -253,6 +253,12 @@ function acep_wpbakery_extend() {
                 ),
                 array(
                     "type" => "textfield",
+                    "heading" => __("Works ID-s (comma separated values)", "acep"),
+                    "param_name" => "acep_works_ids",
+                    "description" => __('If you fill in this field, the fields above will be ignored', "acep")
+                ),
+                array(
+                    "type" => "textfield",
                     "heading" => __("Extra class name", "acep"),
                     "param_name" => "el_class",
                     "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "acep")
@@ -338,7 +344,8 @@ function acep_works_funct($atts) {
     $atts = shortcode_atts(array(
         'acep_works_exhibitions' => false,
         'acep_works_authors' => false,
-        'acep_works_columns' => '3',  
+        'acep_works_columns' => '3', 
+        'acep_works_ids' => false,  
         'el_class' => '',
     ), $atts, 'acep_works');
 

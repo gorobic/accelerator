@@ -6,26 +6,31 @@ $args = array(
 	'orderby' => 'menu_order',
 	'order' => 'ASC',
 );
-
-if($atts['acep_works_exhibitions']){
-    $args['tax_query'] = array(
-        array(
-            'taxonomy' => 'acep_exhibition',
-            'field'    => 'id',
-            'terms'    => explode(',', $atts['acep_works_exhibitions']),
-        ),
-    );
-}
-
-if($atts['acep_works_authors']){
-    $args['meta_query'] = array(
-        'relation'      => 'AND',
-        array(
-            'key' => 'acep_work_author',
-            'compare'    => 'LIKE',
-            'value'    => $atts['acep_works_authors'],
-        ),
-    );
+var_dump($atts['acep_works_ids']);
+if($atts['acep_works_ids']){
+    $args['post__in'] = explode(',', $atts['acep_works_ids']);
+    $args['orderby'] = 'post__in';
+}else{
+    if($atts['acep_works_exhibitions']){
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'acep_exhibition',
+                'field'    => 'id',
+                'terms'    => explode(',', $atts['acep_works_exhibitions']),
+            ),
+        );
+    }
+    
+    if($atts['acep_works_authors']){
+        $args['meta_query'] = array(
+            'relation'      => 'AND',
+            array(
+                'key' => 'acep_work_author',
+                'compare'    => 'LIKE',
+                'value'    => $atts['acep_works_authors'],
+            ),
+        );
+    }
 }
 
 $acep_works = new WP_Query($args);
