@@ -1,0 +1,19 @@
+.page-numbers {
+    display: inline-block;
+    margin: 0.5rem;
+    padding: 0.5rem 0.3rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    min-width: 2.625rem;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.page-numbers:not(.current):not(.dots):hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.page-numbers.current {
+    color: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}

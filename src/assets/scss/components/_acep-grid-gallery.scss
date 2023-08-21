@@ -1,0 +1,14 @@
+.acep-grid-gallery {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.acep-grid-gallery > * {
+    width: min-content;
+}
+
+.acep-grid-gallery img {
+    max-width: 100%;
+    width: 100%;
+}

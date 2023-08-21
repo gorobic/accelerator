@@ -1,9 +1,10 @@
 <?php
 add_action('vc_before_init', 'acep_wpbakery_extend');
 
-function acep_wpbakery_extend() {
+function acep_wpbakery_extend()
+{
 
-    vc_map( 
+    vc_map(
         array(
             "name" => __("ACEP Persons", "acep"),
             "base" => "acep_persons",
@@ -12,7 +13,7 @@ function acep_wpbakery_extend() {
             "show_settings_on_create" => false,
             "is_container" => true,
             "params" => array(
-            // add params same as with any other content element
+                // add params same as with any other content element
                 array(
                     "type" => "textfield",
                     "holder" => "div",
@@ -31,14 +32,14 @@ function acep_wpbakery_extend() {
                 )
             ),
             "js_view" => 'VcColumnView'
-        ) 
+        )
     );
-    vc_map( 
+    vc_map(
         array(
             "name" => __("ACEP Person", "acep"),
             "base" => "acep_person",
             "content_element" => true,
-            "admin_enqueue_css" => get_stylesheet_directory_uri() . '/inc/assets-wpbakery/acep-person.css',
+            "admin_enqueue_css" => get_template_directory_uri() . '/inc/assets-wpbakery/acep-person.css',
             "as_child" => array('only' => 'acep_persons'), // Use only|except attributes to limit parent (separate multiple values with comma)
             'params' => array(
                 array(
@@ -46,9 +47,9 @@ function acep_wpbakery_extend() {
                     "holder" => "img",
                     "class" => "",
                     "admin_label" => false,
-                    "heading" => __( "Image", "acep" ),
+                    "heading" => __("Image", "acep"),
                     "param_name" => "acep_person_img",
-                    "value" => __( "", "acep" ),
+                    "value" => __("", "acep"),
                 ),
                 array(
                     "type" => "textfield",
@@ -69,7 +70,7 @@ function acep_wpbakery_extend() {
                     "value" => __("", "acep"),
                 ),
                 array(
-                    "type" => "textarea_html",                            
+                    "type" => "textarea_html",
                     "class" => "",
                     "admin_label" => false,
                     "heading" => __("Description", "acep"),
@@ -77,15 +78,17 @@ function acep_wpbakery_extend() {
                     "value" => __("", "acep"),
                 ),
             )
-        ) 
+        )
     );
     //Your "container" content element should extend WPBakeryShortCodesContainer class to inherit all required functionality
-    if ( class_exists( 'WPBakeryShortCodesContainer' ) ) {
-        class WPBakeryShortCode_acep_persons extends WPBakeryShortCodesContainer {
+    if (class_exists('WPBakeryShortCodesContainer')) {
+        class WPBakeryShortCode_acep_persons extends WPBakeryShortCodesContainer
+        {
         }
     }
-    if ( class_exists( 'WPBakeryShortCode' ) ) {
-        class WPBakeryShortCode_acep_person extends WPBakeryShortCode {
+    if (class_exists('WPBakeryShortCode')) {
+        class WPBakeryShortCode_acep_person extends WPBakeryShortCode
+        {
         }
     }
 
@@ -104,9 +107,9 @@ function acep_wpbakery_extend() {
                             "type" => "attach_image",
                             "holder" => "img",
                             "class" => "",
-                            "heading" => __( "Image", "acep" ),
+                            "heading" => __("Image", "acep"),
                             "param_name" => "acep_carousel_items_img",
-                            "value" => __( "", "acep" ),
+                            "value" => __("", "acep"),
                         ),
                         array(
                             "type" => "textarea",
@@ -118,7 +121,7 @@ function acep_wpbakery_extend() {
                             "value" => __("", "acep"),
                         ),
                         array(
-                            "type" => "textarea",                            
+                            "type" => "textarea",
                             "class" => "",
                             "admin_label" => false,
                             "heading" => __("Description", "acep"),
@@ -126,7 +129,7 @@ function acep_wpbakery_extend() {
                             "value" => __("", "acep"),
                         ),
                         array(
-                            "type" => "vc_link",                            
+                            "type" => "vc_link",
                             "class" => "",
                             "admin_label" => false,
                             "heading" => __("Link", "acep"),
@@ -134,7 +137,7 @@ function acep_wpbakery_extend() {
                             "value" => __("", "acep"),
                         ),
                     )
-                ),                    
+                ),
             )
         )
     );
@@ -149,27 +152,27 @@ function acep_wpbakery_extend() {
             "params" => array(
                 array(
                     "type" => "textfield",
-                    "heading" => __("Number of posts","acep"),
+                    "heading" => __("Number of posts", "acep"),
                     "description" => __("Enter number of posts to display.", "acep"),
                     "param_name" => "acep_recent_posts_number",
                     "value" => '3',
                 ),
                 array(
                     "type" => "dropdown",
-                    "heading" => __("Number of columns (for desktop)","acep"),
+                    "heading" => __("Number of columns (for desktop)", "acep"),
                     "param_name" => "acep_recent_posts_columns",
-                    "value" => array(1,2,3),
+                    "value" => array(1, 2, 3),
                 ),
             ),
-        ) 
+        )
     );
 
-    $terms_editions = get_terms( array(
+    $terms_editions = get_terms(array(
         'taxonomy' => 'acep_edition',
         'hide_empty' => false,
         // 'fields' => array('ids','name')
-    ) );
-    
+    ));
+
     foreach ($terms_editions as $item) {
         $terms_editions_result[$item->name] = $item->term_id;
     }
@@ -200,28 +203,28 @@ function acep_wpbakery_extend() {
                     "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "acep")
                 )
             ),
-        ) 
+        )
     );
 
-    $terms_exhibitions = get_terms( array(
+    $terms_exhibitions = get_terms(array(
         'taxonomy' => 'acep_exhibition',
         'hide_empty' => false,
         // 'fields' => array('ids','name')
-    ) );
-    
+    ));
+
     foreach ($terms_exhibitions as $item) {
         $terms_exhibitions_result[$item->name] = $item->term_id;
     }
 
-    $args = array( 
-        'post_type' => 'acep_artists', 
+    $args = array(
+        'post_type' => 'acep_artists',
         'suppress_filters' => false,
         'posts_per_page' => -1
     );
-    $posts_artists = new WP_Query( $args );
+    $posts_artists = new WP_Query($args);
 
     $posts_artists_result = array('Select' => '');
-    
+
     foreach ($posts_artists->posts as $item) {
         $posts_artists_result[$item->post_title] = $item->ID;
     }
@@ -264,7 +267,7 @@ function acep_wpbakery_extend() {
                     "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "acep")
                 )
             ),
-        ) 
+        )
     );
 
     vc_map(
@@ -290,17 +293,18 @@ function acep_wpbakery_extend() {
                     "description" => __('Avoid placing images whose height is more than width in the last position. Use Drang and Drop to reorder images.', "acep")
                 ),
             ),
-        ) 
+        )
     );
 }
 
 
 add_shortcode('acep_carousel', 'acep_carousel_funct');
-function acep_carousel_funct($atts) {
+function acep_carousel_funct($atts)
+{
     ob_start();
     $atts = shortcode_atts(array(
         //'acep_carousel_heading'=>'',
-        'acep_carousel_items' =>'',        
+        'acep_carousel_items' => '',
     ), $atts, 'acep_carousel');
 
     //$heading = $atts['acep_carousel_heading'];  
@@ -312,11 +316,12 @@ function acep_carousel_funct($atts) {
 }
 
 add_shortcode('acep_recent_posts', 'acep_recent_posts_funct');
-function acep_recent_posts_funct($atts) {
+function acep_recent_posts_funct($atts)
+{
     ob_start();
     $atts = shortcode_atts(array(
         'acep_recent_posts_number' => '3',
-        'acep_recent_posts_columns' => '3',        
+        'acep_recent_posts_columns' => '3',
     ), $atts, 'acep_recent_posts');
 
     include(locate_template('inc/shortcodes/shortcode-acep_recent_posts.php'));
@@ -325,11 +330,12 @@ function acep_recent_posts_funct($atts) {
 }
 
 add_shortcode('acep_artists', 'acep_artists_funct');
-function acep_artists_funct($atts) {
+function acep_artists_funct($atts)
+{
     ob_start();
     $atts = shortcode_atts(array(
         'acep_artists_editions' => false,
-        'acep_artists_columns' => '5',  
+        'acep_artists_columns' => '5',
         'el_class' => '',
     ), $atts, 'acep_artists');
 
@@ -339,13 +345,14 @@ function acep_artists_funct($atts) {
 }
 
 add_shortcode('acep_works', 'acep_works_funct');
-function acep_works_funct($atts) {
+function acep_works_funct($atts)
+{
     ob_start();
     $atts = shortcode_atts(array(
         'acep_works_exhibitions' => false,
         'acep_works_authors' => false,
-        'acep_works_columns' => '3', 
-        'acep_works_ids' => false,  
+        'acep_works_columns' => '3',
+        'acep_works_ids' => false,
         'el_class' => '',
     ), $atts, 'acep_works');
 
@@ -355,11 +362,12 @@ function acep_works_funct($atts) {
 }
 
 add_shortcode('acep_persons', 'acep_persons_funct');
-function acep_persons_funct($atts, $content) {
+function acep_persons_funct($atts, $content)
+{
     ob_start();
     $atts = shortcode_atts(array(
         'acep_persons_number' => '6',
-        'el_class' => '',        
+        'el_class' => '',
     ), $atts, 'acep_persons');
 
     include(locate_template('inc/shortcodes/shortcode-acep_persons.php'));
@@ -368,12 +376,13 @@ function acep_persons_funct($atts, $content) {
 }
 
 add_shortcode('acep_person', 'acep_person_funct');
-function acep_person_funct($atts, $content) {
+function acep_person_funct($atts, $content)
+{
     ob_start();
     $atts = shortcode_atts(array(
         'acep_person_img' => '',
-        'acep_person_name' => '', 
-        'acep_person_title' => '',      
+        'acep_person_name' => '',
+        'acep_person_title' => '',
     ), $atts, 'acep_person');
 
     include(locate_template('inc/shortcodes/shortcode-acep_person.php'));
@@ -382,7 +391,8 @@ function acep_person_funct($atts, $content) {
 }
 
 add_shortcode('acep_grid_gallery', 'acep_grid_gallery_funct');
-function acep_grid_gallery_funct($atts, $content) {
+function acep_grid_gallery_funct($atts, $content)
+{
     ob_start();
     $atts = shortcode_atts(array(
         'acep_grid_gallery_imgs' => '',

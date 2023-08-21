@@ -1,0 +1,85 @@
+.acep-carousel__item {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    min-height: 500px;
+
+    @media (max-width: 575.98px) {
+        min-height: 350px;
+    }
+}
+
+.acep-carousel__item > * {
+    position: relative;
+    z-index: 5;
+}
+
+.acep-carousel__item:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    opacity: 0.6;
+}
+
+.acep-carousel .slick-track {
+    display: flex !important;
+}
+
+.acep-carousel__item {
+    height: inherit !important;
+}
+
+.acep-carousel__item-content {
+    font-size: 1.25rem;
+
+    @media (max-width: 575.98px) {
+        font-size: 0.95rem;
+    }
+}
+
+.acep-carousel .slick-prev:before,
+.acep-carousel .slick-next:before {
+    content: "\e900";
+    font-family: "acep";
+    color: #000;
+    font-size: 20px;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    display: block;
+}
+
+.acep-carousel .slick-prev:before {
+    transform: rotate(180deg);
+}
+
+.acep-carousel .slick-prev,
+.acep-carousel .slick-next {
+    font-size: 0;
+    line-height: 0;
+    color: transparent;
+    display: block;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    width: auto;
+    z-index: 10;
+    background: #fff;
+    padding: 20px;
+    box-sizing: content-box;
+    position: absolute;
+    bottom: 0;
+}
+
+.acep-carousel .slick-prev {
+    right: 50px;
+    padding-right: 10px;
+}
+
+.acep-carousel .slick-next {
+    right: 0;
+    padding-left: 10px;
+}

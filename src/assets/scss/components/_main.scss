@@ -1,0 +1,148 @@
+/* @todo: de sters acest cod temporar */
+.otgs-development-site-front-end {
+    display: none !important;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.grid {
+    display: grid;
+    grid-template-rows: auto;
+
+    grid-template-columns:
+        [wrapper-start]
+        minmax(0, 1fr)
+        [start]
+        repeat(12, [col] minmax(0, calc(100% / 12)))
+        [end]
+        minmax(0, 1fr)
+        [wrapper-end];
+
+    @include media-breakpoint-up(xxl) {
+        grid-template-columns:
+            [wrapper-start]
+            minmax(0, 1fr)
+            [start]
+            repeat(
+                12,
+                [col]
+                    minmax(0, calc(map_get($container-max-widths, "xxl") / 12))
+            )
+            [end]
+            minmax(0, 1fr)
+            [wrapper-end];
+    }
+}
+
+.bg-cover {
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.bg-contain {
+    -webkit-background-size: contain;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.bg-size-auto {
+    background-size: auto;
+    background-repeat: no-repeat;
+}
+
+.bg-size-cover {
+    background-size: cover;
+}
+
+.bg-size-contain {
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.bg-size-x-100 {
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+}
+
+.bg-size-y-100 {
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+
+.bg-x-left {
+    background-position-x: left;
+}
+
+.bg-x-center {
+    background-position-x: center;
+}
+
+.bg-x-right {
+    background-position-x: right;
+}
+
+.bg-y-top {
+    background-position-y: top;
+}
+
+.bg-y-center {
+    background-position-y: center;
+}
+
+.bg-y-bottom {
+    background-position-y: bottom;
+}
+
+.stretched-link-invisible {
+    overflow: clip;
+    width: 0px !important;
+    height: 0px !important;
+    padding: 0 !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+    font-size: 0;
+}
+
+.w-fit-content {
+    width: fit-content;
+}
+
+.container-gutenberg {
+    padding-left: $grid-gutter-width * 0.5;
+    padding-right: $grid-gutter-width * 0.5;
+    max-width: calc(
+        var(--wp--style--global--content-size) + $grid-gutter-width
+    );
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wpb_single_image.vc_align_center > .vc_figure,
+.wpb_single_image.vc_align_center > .vc_figure > .vc_single_image-wrapper,
+.wpb_single_image.vc_align_center
+    > .vc_figure
+    > .vc_single_image-wrapper
+    > img {
+    width: 100%;
+}
+
+.featured-image .arrow {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #fff;
+    padding: 0 10px;
+}
+
+.acep-work img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}

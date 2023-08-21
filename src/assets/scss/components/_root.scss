@@ -1,0 +1,18 @@
+:root {
+    --reference: 50px;
+
+    @include media-breakpoint-up(sm) {
+        --reference: 60px;
+    }
+
+    @include media-breakpoint-up(md) {
+        --reference: 70px;
+    }
+
+    @include media-breakpoint-up(xl) {
+        --reference: 100px;
+    }
+
+    // Above is backwards compatibility
+    --reference: clamp(50px, calc(8.33vw), 100px);
+}
