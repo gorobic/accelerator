@@ -1,13 +1,25 @@
 </div>
 </div>
 <footer class="container">
-    <?php if (get_theme_mod('acep_footer_text') || get_field('acep_post_footer_text')) { ?>
-        <div class="footer-disclaimer border-top border-bottom py-4 py-md-5">
-            <?php if (get_field('acep_post_footer_text')) {
-                echo do_shortcode(get_field('acep_post_footer_text'));
-            } else {
-                echo do_shortcode(get_theme_mod('acep_footer_text'));
-            } ?>
+    <?php
+    $related_subsite = get_field('acep_related_subsite');
+    if ($related_subsite) {
+        if ($related_subsite != get_current_blog_id()) {
+            $sites = get_sites();
+            $sites_ids = array_column($sites, 'blog_id');
+            if (in_array($related_subsite, $sites_ids)) {
+                $related_subsite_id = $related_subsite;
+            }
+        }
+    }
+
+    if ($related_subsite_id) {
+        switch_to_blog($related_subsite_id);
+    }
+
+    if (get_theme_mod('acep_footer_text')) { ?>
+        <div class="footer-disclaimer border-top py-4 py-md-5">
+            <?php echo do_shortcode(get_theme_mod('acep_footer_text')); ?>
         </div>
     <?php } ?>
 
@@ -20,7 +32,7 @@
 
     // If a block was located print it and return true.
     if ($footer_widgets_posts && isset($footer_widgets_posts[0])) { ?>
-        <div class="py-3">
+        <div class="py-3 border-top">
             <?php echo do_blocks($footer_widgets_posts[0]->post_content); ?>
         </div>
     <?php } ?>
@@ -46,6 +58,9 @@
             </div>
         </div>
     <?php } ?>
+    <?php if ($related_subsite_id) {
+        restore_current_blog();
+    } ?>
 </footer>
 </div>
 
