@@ -416,4 +416,50 @@ if (function_exists('acf_add_local_field_group')) {
         'description' => '',
         'show_in_rest' => 0,
     ));
+
+    acf_add_local_field_group(array(
+        'key' => 'group_64f98aef33025',
+        'title' => 'Post',
+        'fields' => array(
+            array(
+                'key' => 'field_64f98affb6161',
+                'label' => 'Footer Disclaimer',
+                'name' => 'acep_post_footer_text',
+                'type' => 'wysiwyg',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'wpml_cf_preferences' => 2,
+                'default_value' => '',
+                'tabs' => 'all',
+                'toolbar' => 'full',
+                'media_upload' => 0,
+                'delay' => 0,
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'post',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => '',
+        'active' => true,
+        'description' => '',
+        'show_in_rest' => 0,
+        'acfml_field_group_mode' => 'translation',
+    ));
 }
