@@ -16,6 +16,20 @@
         <div>
             <div class="container overflow-hidden">
 
+                <?php
+                $header_widgets_slug = 'header-logos';
+                $header_widgets_posts = get_posts([
+                    'post_type' => 'wp_block',
+                    'title'     => $header_widgets_slug,
+                ]);
+
+                // If a block was located print it and return true.
+                if ($header_widgets_posts && isset($header_widgets_posts[0])) { ?>
+                    <div class="py-3 border-bottom">
+                        <?php echo do_blocks($header_widgets_posts[0]->post_content); ?>
+                    </div>
+                <?php } ?>
+
                 <div class="row gx-5 flex-md-nowrap header-logos py-3 justify-content-center align-items-center">
                     <div class="col-md-auto flex-shrink-1 text-center">
                         <a href="<?php echo esc_url(get_bloginfo('url')); ?>" class="site-logo">
